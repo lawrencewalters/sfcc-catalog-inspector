@@ -11,12 +11,14 @@ Building from this repo
 running
 -----------------
 
-1. Export your SFCC master catalog as xml from Business manager (Merchant Tools >  Products and Catalogs >  Import & Export > Catalogs-Export)
-1. Export your SFCC site catalog as xml from Business manager (unless all your catalog data is in the master, then you'll just specify the same master file below)
-1. Download both of those to this directory (Merchant Tools >  Products and Catalogs >  Import & Export > Import & Export Files-Download)
+1. Export your SFCC master catalog as xml (name it "master-catalog") from Business manager (Merchant Tools >  Products and Catalogs >  Import & Export > Catalogs-Export)
+1. Export your SFCC site catalog as xml (name it "site-catalog") from Business manager (unless all your catalog data is in the master, then you'll just specify the same master file below)
+1. Download both of those files (master-catalog.xml, site-catalog.xml) to this directory (Merchant Tools >  Products and Catalogs >  Import & Export > Import & Export Files-Download)
 1. Run this app from command line (powershell or git bash will work)
 
 `dotnet run`
+
+(expects master-catalog.xml and site-catalog.xml to exist in this current directory)
 
 or
 
