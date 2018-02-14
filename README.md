@@ -5,8 +5,8 @@ This app does some simple inspection of SFCC xml files, generates a list of prod
 
 Building from this repo
 ------------------------
-clone this repo
-install dotnet core (https://dot.net)
+1. clone this repo
+1. install dotnet core (https://dot.net)
 
 running
 -----------------
