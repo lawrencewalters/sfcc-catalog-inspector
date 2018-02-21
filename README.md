@@ -5,8 +5,8 @@ This app does some simple inspection of SFCC xml files, generates a list of prod
 
 Building from this repo
 ------------------------
+1. install dotnet core (https://dot.net) for your platform. On windows, find this at https://www.microsoft.com/net/download/windows, and as of the time of this writing, this would be the 64bit latest SDK: https://www.microsoft.com/net/download/thank-you/dotnet-sdk-2.1.4-windows-x64-installer. I'm not totally certain the SDK is necessary for just running this.
 1. clone this repo
-1. install dotnet core (https://dot.net)
 
 running
 -----------------
