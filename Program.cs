@@ -59,7 +59,8 @@ namespace SFCC
 
             Dictionary<string, VariantData> dictVariantData = new Dictionary<string, VariantData>();
 
-            StreamWriter swOutputVariants = new StreamWriter("variants.txt");
+            StreamWriter swOutputVariants = new StreamWriter("variants.csv");
+            swOutputVariants.WriteLine("variant,master,name,color,size2,categories");
             StreamWriter swOutputCatalogXML = new StreamWriter("variants.xml");
             StreamWriter categoryAssignments = new StreamWriter("categoryAssignments.csv");
             categoryAssignments.WriteLine("productId,primaryCategory,classificationCategory");
@@ -114,14 +115,14 @@ namespace SFCC
                             var xSize = nodeComponentProduct.SelectSingleNode("dw:custom-attributes/dw:custom-attribute[@attribute-id=\"size2\"]", ns1);
                             d.size2 = xSize != null ? xSize.InnerText : string.Empty;
                         }
-                        string output = variantID + "\t" + d.masterID + "\t" + d.name + "\t" + d.color + "\t" + d.size2 + "\t";
+                        string output = variantID + "," + d.masterID + ",\"" + d.name.Replace("\"","\"\"") + "\"," + d.color + "," + d.size2;
 
                         d.categoryAssignments = new List<string>();
                         XmlNodeList nodeCategoryAssignments = docSiteCatalog.SelectNodes("//dw:catalog/dw:category-assignment[@product-id=\"" + variantID + "\"]", ns2);
                         foreach (XmlNode nodeCategoryAssignment in nodeCategoryAssignments)
                         {
                             d.categoryAssignments.Add(nodeCategoryAssignment.Attributes["category-id"].InnerText);
-                            output += nodeCategoryAssignment.Attributes["category-id"].InnerText + "\t";
+                            output += ",\"" + nodeCategoryAssignment.Attributes["category-id"].InnerText.Replace("\"","\"\"") + "\"";
                             swOutputCatalogXML.WriteLine("<category-assignment category-id=\"" + nodeCategoryAssignment.Attributes["category-id"].InnerText + "\" product-id=\"" + variantID + "\" />");
                         }
                         dictVariantData.Add(variantID, d);
